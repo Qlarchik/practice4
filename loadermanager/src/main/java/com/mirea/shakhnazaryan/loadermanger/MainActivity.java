@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity implements
 
     public void onClick(View view){
         Bundle bundle = new Bundle();
-        bundle.putString(MyLoader.ARG_WORD, "mirea");
+        bundle.putString(MyLoader.ARG_WORD, editText.getText().toString());
         getSupportLoaderManager().initLoader(LoaderID, bundle, this);
     }
 
@@ -55,6 +55,7 @@ public class MainActivity extends AppCompatActivity implements
         if (loader.getId() == LoaderID) {
             Log.d(TAG, "onLoadFinished" + s);
             Toast.makeText(this, "onLoadFinished:" + s, Toast.LENGTH_SHORT).show();
+            textView.setText(s);
         }
     }
 }

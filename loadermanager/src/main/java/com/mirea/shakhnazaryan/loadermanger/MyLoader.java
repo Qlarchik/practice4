@@ -7,14 +7,22 @@ import android.os.SystemClock;
 import androidx.annotation.NonNull;
 import androidx.loader.content.AsyncTaskLoader;
 
+import java.io.Console;
+import java.lang.invoke.ConstantCallSite;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+
 public class MyLoader extends AsyncTaskLoader<String> {
-    private String firstName;
     public static final String ARG_WORD = "word";
+
+    private String text;
+    private String result;
 
     public MyLoader(@NonNull Context context, Bundle args) {
         super(context);
         if (args != null)
-            firstName = args.getString(ARG_WORD);
+            text = args.getString(ARG_WORD);
     }
 
     @Override
@@ -25,8 +33,14 @@ public class MyLoader extends AsyncTaskLoader<String> {
 
     @Override
     public String loadInBackground() {
+        result = "";
+        List<String> listText = Arrays.asList(text.split(""));
+        Collections.shuffle(listText);
+        for (String t : listText) {
+            result += t;
+        }
         // emulate long-running operation
         SystemClock.sleep(5000);
-        return firstName;
+        return result;
     }
 }
