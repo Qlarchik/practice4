@@ -27,9 +27,12 @@ public class MainActivity extends AppCompatActivity {
     public void onClick(View view) {
         Runnable runnable = new Runnable() {
             public void run() {
-                int number1 = Integer.parseInt(countOfLessons.getText().toString());
-                int number2 = Integer.parseInt(countOfDays.getText().toString());
-                int result = number1 / number2;
+                int number1 = 0;
+                int number2 = 0;
+                int result = 0;
+                number1 = Integer.parseInt(countOfLessons.getText().toString());
+                number2 = Integer.parseInt(countOfDays.getText().toString());
+                result = number1 / number2;
                 textView.setText(String.valueOf(result));
             }
         };
